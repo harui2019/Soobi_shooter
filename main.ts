@@ -19,7 +19,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, Shooter, 50, 0)
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
-    sprite.destroy(effects.fire, 200)
     sprite.setVelocity(0, 0)
     animation.runImageAnimation(
     sprite,
@@ -61,7 +60,8 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, oth
     50,
     false
     )
-    otherSprite.destroy()
+    sprite.destroy(effects.fire, 200)
+    otherSprite.destroy(effects.warmRadial, 500)
 })
 scene.onHitWall(SpriteKind.Enemy, function (sprite, location) {
     sprite.destroy(effects.smiles, 100)
